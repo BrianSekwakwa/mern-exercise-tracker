@@ -34,6 +34,10 @@ const usersRouter = require("./routes/users");
 app.use("/exercises", exercisesRouter);
 app.use("/users", usersRouter);
 
+app.get("/", (req, res) => {
+  res.send("Welcome to the exercise tracker application server");
+});
+
 // -- Listeing to changes on the server from a specific PORT
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
