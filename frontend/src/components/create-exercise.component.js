@@ -23,7 +23,7 @@ export class CreateExercise extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/users/")
+      .get("https://exercsise-tracker-application.herokuapp.com/users/")
       .then((res) => {
         if (res.data.length > 0) {
           this.setState({
@@ -67,7 +67,10 @@ export class CreateExercise extends Component {
     };
 
     axios
-      .post("http://localhost:5000/exercises/add", exercise)
+      .post(
+        "https://exercsise-tracker-application.herokuapp.com/exercises/add",
+        exercise
+      )
       .catch((err) => alert(`Could not submit data: ${err.message}`));
 
     window.location = "/";

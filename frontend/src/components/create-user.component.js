@@ -27,7 +27,10 @@ export default class CreateUser extends Component {
     };
 
     axios
-      .post("http://localhost:5000/users/add", user)
+      .post(
+        "https://exercsise-tracker-application.herokuapp.com/users/add",
+        user
+      )
       .catch((err) => alert(`Cannot create user: ${err.message}`));
 
     this.setState({

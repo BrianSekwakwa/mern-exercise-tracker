@@ -15,7 +15,7 @@ export class ExercisesList extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/exercises/")
+      .get("https://exercsise-tracker-application.herokuapp.com/exercises/")
       .then((res) => {
         this.setState({
           exercises: res.data,
@@ -26,7 +26,9 @@ export class ExercisesList extends Component {
 
   deleteExercise(id) {
     axios
-      .delete("http://localhost:5000/exercises/" + id)
+      .delete(
+        "https://exercsise-tracker-application.herokuapp.com/exercises/" + id
+      )
       .catch((err) => alert(`Could not delete data: ${err.message}`));
 
     this.setState({
