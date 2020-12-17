@@ -26,15 +26,15 @@ export default class CreateUser extends Component {
       username: this.state.username,
     };
 
-    console.log(user);
-
     axios
       .post("http://localhost:5000/users/add", user)
-      .then((res) => console.log(res.data));
+      .catch((err) => alert(`Cannot create user: ${err.message}`));
 
     this.setState({
       username: "",
     });
+
+    window.location = "/create";
   }
 
   render() {

@@ -34,7 +34,7 @@ export default class EditExercise extends Component {
         });
       })
       .catch(function (error) {
-        console.log(error);
+        alert(error.message);
       });
 
     axios
@@ -47,7 +47,7 @@ export default class EditExercise extends Component {
         }
       })
       .catch((error) => {
-        console.log(error);
+        alert(`Cannot fetch data: ${error.message}`);
       });
   }
 
@@ -85,14 +85,12 @@ export default class EditExercise extends Component {
       date: this.state.date,
     };
 
-    console.log(exercise);
-
     axios
       .post(
         "http://localhost:5000/exercises/update/" + this.props.match.params.id,
         exercise
       )
-      .then((res) => console.log(res.data));
+      .catch((err) => alert(`Cannot edit: ${err.message}`));
 
     window.location = "/";
   }

@@ -22,14 +22,17 @@ export class CreateExercise extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:5000/users/").then((res) => {
-      if (res.data.length > 0) {
-        this.setState({
-          users: res.data.map((user) => user.username),
-          username: res.data[0].username,
-        });
-      }
-    });
+    axios
+      .get("http://localhost:5000/users/")
+      .then((res) => {
+        if (res.data.length > 0) {
+          this.setState({
+            users: res.data.map((user) => user.username),
+            username: res.data[0].username,
+          });
+        }
+      })
+      .catch((err) => alert(`Could not fetch data: ${err.message}`));
   }
 
   onChangeUsername(e) {
@@ -65,7 +68,7 @@ export class CreateExercise extends Component {
 
     axios
       .post("http://localhost:5000/exercises/add", exercise)
-      .then((res) => console.log(res.data));
+      .catch((err) => alert(`Could not submit data: ${err.message}`));
 
     window.location = "/";
   }
